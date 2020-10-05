@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">NextCode</string>
+    <string name="correo">Correo</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="sesion">Iniciar Sesión</string>
+    <string name="registrate">Regístrate</string>
+
+    <string name="nombre">Nombres</string>
+    <string name="apellido">Apellidos</string>
+    <string name="cedula">Cédula</string>
+    <string name="correoReg">Correo</string>
+    <string name="contraseniaReg">Contraseña</string>
+    <string name="registro">Registrar</string>
+
+    <string name="contratarPlan">Contratar Plan</string>
+    <string name="misPlanes">Mis Planes</string>
+    <string name="facturar">Facturar</string>
+    <string name="misFacturas">Mis Facturas</string>
+
+    <string name="contratar">Contratar Plan</string>
 </resources>
