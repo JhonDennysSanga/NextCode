@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    //MainActivity
+    //MainActivity//
     //ramaJhon
 
     private static final String TAG = "NextCode";

@@ -1,19 +1,19 @@
 package com.example.nextcode.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import com.example.nextcode.R;
-import com.example.nextcode.models.Planes;
+import com.example.nextcode.models.Facturas;
 import com.example.nextcode.models.PlanesUsuario;
 import com.example.nextcode.models.Usuarios;
 import com.example.nextcode.models.UsuariosRespuesta;
 import com.example.nextcode.nextcodeApi.ApiService;
+import com.example.nextcode.nextcodeApi.FacturasAdapter;
 import com.example.nextcode.nextcodeApi.PlanesDeUsuariosAdapter;
 import com.example.nextcode.nextcodeApi.RetrofitClient;
 
@@ -22,24 +22,22 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PlanesDeUsuariosActivity extends AppCompatActivity {
+public class FacturasActivity extends AppCompatActivity {
 
     private static final String TAG = "NextCode";
 
     private RecyclerView recyclerView;
-    private PlanesDeUsuariosAdapter listaPlanesDeUsuariosAdapter;
+    private FacturasAdapter listaFacturasAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_planes_de_usuarios);
+        setContentView(R.layout.activity_facturas);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewPlanUs);
-        listaPlanesDeUsuariosAdapter = new PlanesDeUsuariosAdapter(this);
-        recyclerView.setAdapter(listaPlanesDeUsuariosAdapter);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewFacturas);
+        listaFacturasAdapter = new FacturasAdapter(this);
+        recyclerView.setAdapter(listaFacturasAdapter);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
@@ -49,7 +47,7 @@ public class PlanesDeUsuariosActivity extends AppCompatActivity {
 
     private void obtenerDatos() {
         ApiService service = RetrofitClient.getRetrofit().create(ApiService.class);
-        Call<UsuariosRespuesta> usuariosRespuestaCall = service.obtenerListaPlanesDeUsuarios();
+        Call<UsuariosRespuesta> usuariosRespuestaCall = service.obtenerListaFacturas();
 
         usuariosRespuestaCall.enqueue(new Callback<UsuariosRespuesta>() {
             @Override
@@ -58,12 +56,12 @@ public class PlanesDeUsuariosActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     UsuariosRespuesta usuariosRespuesta = response.body();
                     ArrayList<Usuarios> listaUsuarios = usuariosRespuesta.getData();
-                    ArrayList<PlanesUsuario> listaPlanesUsuario = listaUsuarios.get(MainActivity.getUsuario_id() - 1).getPlanes();
+                    ArrayList<Facturas> listaFacturas = listaUsuarios.get(MainActivity.getUsuario_id() - 1).getFacturas();
 
-                    listaPlanesDeUsuariosAdapter.adicionarListaPlanesDeUsuarios(listaPlanesUsuario);
+                    listaFacturasAdapter.adicionarListaFacturas(listaFacturas);
 
-                    for (PlanesUsuario p : listaPlanesUsuario) {
-                        Log.i(TAG, "PlanesUsuario: " + p.getPlan().getNombre());
+                    for (Facturas f : listaFacturas) {
+                        Log.i(TAG, "Facturas: id = " + f.getId() + ", serie= " + f.getSerie());
                     }
 
                 } else {
@@ -79,5 +77,3 @@ public class PlanesDeUsuariosActivity extends AppCompatActivity {
 
     }
 }
-
-

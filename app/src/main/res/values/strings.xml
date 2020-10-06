@@ -18,4 +18,6 @@
     <string name="misFacturas">Mis Facturas</string>
 
     <string name="contratar">Contratar Plan</string>
+
+    <string name="facturaGenerada">Factura Generada</string>
 </resources>

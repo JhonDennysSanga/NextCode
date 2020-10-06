@@ -1,5 +1,6 @@
 package com.example.nextcode.nextcodeApi;
 
+import com.example.nextcode.models.Facturas;
 import com.example.nextcode.models.PlanesRespuesta;
 import com.example.nextcode.models.PlanesUsuario;
 import com.example.nextcode.models.PlanesUsuarioRespuesta;
@@ -25,6 +26,9 @@ public interface ApiService {
     @GET("usuarios?embed=planes?embed=plan")
     Call<UsuariosRespuesta> obtenerListaPlanesDeUsuarios();
 
+    @GET("usuarios?embed=facturas")
+    Call<UsuariosRespuesta> obtenerListaFacturas();
+
 
 
 
@@ -46,6 +50,20 @@ public interface ApiService {
                             @Field("correo") String correo,
                             @Field("status") String status
                             );
+
+    @POST("facturas")
+    @FormUrlEncoded
+    Call<Facturas> registrarFactura(
+            @Field("serie") String serie,
+            @Field("secuencial") int secuencial,
+            @Field("fecha_emision") String fecha_emision,
+            @Field("subtotal") String subtotal,
+            @Field("iva") String iva,
+            @Field("total") String total,
+            @Field("estado_pago") String estado_pago,
+            @Field("usuario_id") int usuario_id,
+            @Field("status") String status
+    );
 
 
 }

@@ -22,6 +22,8 @@ public class Usuarios {
     private String status;
     @Expose
     private ArrayList<PlanesUsuario> planes;
+    @Expose
+    private ArrayList<Facturas> facturas;
 
 
 
@@ -83,6 +85,14 @@ public class Usuarios {
 
     public ArrayList<PlanesUsuario> getPlanes() {
         return planes;
+    }
+
+    public ArrayList<Facturas> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(ArrayList<Facturas> facturas) {
+        this.facturas = facturas;
     }
 
     public void setPlanes(ArrayList<PlanesUsuario> planes) {

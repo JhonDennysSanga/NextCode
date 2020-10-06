@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".views.PlanesDeUsuariosActivity"></activity>
+        <activity android:name=".views.FacturaGeneradaActivity"></activity>
+        <activity android:name=".views.FacturasActivity" />
+        <activity android:name=".views.PlanesDeUsuariosActivity" />
         <activity android:name=".views.PlanesActivity" />
         <activity android:name=".views.IngresoMenuActivity" />
         <activity android:name=".views.RegistroActivity" />
